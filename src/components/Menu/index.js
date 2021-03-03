@@ -11,7 +11,7 @@ function Menu() {
                 <img className= "Img" src ={Img} alt="MadFlix logo"/>
             </a>
             <Button as="a" className= "ButtonLink" href="/">
-                Novo Vídeo
+                Add Novo Vídeo
             </Button>
 
         </nav>
