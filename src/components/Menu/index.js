@@ -1,16 +1,17 @@
 import React from 'react';
+import { Link } from 'react-router-dom'; //pagina não fica loop carregando
 import Img from '../../assets/img/Madflix_logo.png';
 import './menu.css';
 import Button from '../Button/';
-// import ButtonLink from '../components/ButtonLink';
+//import ButtonLink from '../components/ButtonLink';
 
 function Menu() {
     return (
         <nav className="Menu">
-            <a href="/">
+            <Link to="/">
                 <img className= "Img" src ={Img} alt="MadFlix logo"/>
-            </a>
-            <Button as="a" className= "ButtonLink" href="/">
+            </Link>
+            <Button as={Link} className= "ButtonLink" to="/cadastro/video">
                 Add Novo Vídeo
             </Button>
 
