@@ -1,10 +1,11 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
+import FormField from '../../../components/FormField';
 import PageDefault from '../../../components/PageDefault';
 
 function CadastroCategoria() {
 
-  const [categorias, setCategorias] = useState(['Teste']);
+  const [categorias, setCategorias] = useState([]);
 
   const dadosIniciais = {
     nome: '',
@@ -21,12 +22,10 @@ function CadastroCategoria() {
     setNomeDaCategoria({
       ...NomeDaCategoria,
     [chave]: valor,
-    }
-
-    )
+    })
   }
 
-  function HandlChanger(informeDados) {
+  function handlChange(informeDados) {
     setValores(informeDados.target.getAttribute('name'), 
     informeDados.target.value
     );
@@ -42,11 +41,19 @@ function CadastroCategoria() {
           ...categorias,
           NomeDaCategoria
         ]);
-
+    
         setNomeDaCategoria(dadosIniciais)
       }}>
-        <div>
 
+
+       <FormField 
+       label="Nome da Categoria"
+       type="text"
+       name= "nome"
+       value={NomeDaCategoria.nome}
+       onChange={handlChange}
+       />
+{/* <div>
           <label>
             Nome da Categoria:
         <input
@@ -55,11 +62,20 @@ function CadastroCategoria() {
               value={NomeDaCategoria.nome}
               //funçao criada para alterar dados do campo nome da categoria
               name="nome"
-              onChange={HandlChanger}
+              onChange={handlChange}
             />
           </label>
-        </div>
-        <div>
+        </div> */}
+
+        <FormField 
+        label="Descrição"
+        type="text"
+        name="Descrição"
+        value={NomeDaCategoria.nome}
+        onChange={handlChange}
+       />
+
+        {/* <div>
           <label>
             Descrição:
         <input
@@ -68,11 +84,20 @@ function CadastroCategoria() {
               value={NomeDaCategoria.descricao}
               //funçao criada para alterar dados do campo nome da categoria
               name="descricao"
-              onChange={HandlChanger}
+              onChange={handlChange}
             />
           </label>
-        </div>
-        <div>
+        </div> */}
+
+        <FormField 
+        label="cor"
+        type="color"
+        name="cor"
+        value={NomeDaCategoria.nome}
+        onChange={handlChange}
+       />
+
+        {/* <div>
           <label>
             Cor:
         <input
@@ -81,10 +106,10 @@ function CadastroCategoria() {
               value={NomeDaCategoria.cor}
               //funçao criada para alterar dados do campo nome da categoria
               name="cor"
-              onChange={HandlChanger}
+              onChange={handlChange}
             />
           </label>
-        </div>
+        </div> */}
 
         <button>
           Cadastrar
@@ -95,7 +120,7 @@ function CadastroCategoria() {
         {categorias.map((categoria, indice) => {
           return (
             <li key={`${categoria}${indice}`}>
-              {categoria.indice}
+              {categoria.nome}
             </li>
           )
         })}
