@@ -4,7 +4,6 @@ import FormField from '../../../components/FormField';
 import PageDefault from '../../../components/PageDefault';
 
 function CadastroCategoria() {
-
   const [categorias, setCategorias] = useState([]);
 
   const dadosIniciais = {
@@ -12,48 +11,50 @@ function CadastroCategoria() {
     descricao: '',
     cor: '',
 
-  }
+  };
 
-  const [NomeDaCategoria, setNomeDaCategoria] = useState(dadosIniciais)
-  //função set - usada para alterar o NomeDaCategoria
-  //console.log([NomeDaCategoria], NomeDaCategoria)
+  const [NomeDaCategoria, setNomeDaCategoria] = useState(dadosIniciais);
+  // função set - usada para alterar o NomeDaCategoria
+  // console.log([NomeDaCategoria], NomeDaCategoria)
 
   function setValores(chave, valor) {
     setNomeDaCategoria({
       ...NomeDaCategoria,
-    [chave]: valor,
-    })
+      [chave]: valor,
+    });
   }
 
   function handlChange(informeDados) {
-    setValores(informeDados.target.getAttribute('name'), 
-    informeDados.target.value
-    );
+    setValores(informeDados.target.getAttribute('name'),
+      informeDados.target.value);
   }
 
   return (
     <PageDefault>
-      <h1>Cadastro de Categoria: {NomeDaCategoria.nome}</h1>
+      <h1>
+        Cadastro de Categoria:
+        {NomeDaCategoria.nome}
+      </h1>
 
       <form onSubmit={function handleSubmit(informeDados) {
         informeDados.preventDefault();
         setCategorias([
           ...categorias,
-          NomeDaCategoria
+          NomeDaCategoria,
         ]);
-    
-        setNomeDaCategoria(dadosIniciais)
-      }}>
 
+        setNomeDaCategoria(dadosIniciais);
+      }}
+      >
 
-       <FormField 
-       label="Nome da Categoria"
-       type="text"
-       name= "nome"
-       value={NomeDaCategoria.nome}
-       onChange={handlChange}
-       />
-{/* <div>
+        <FormField
+          label="Nome da Categoria"
+          type="text"
+          name="nome"
+          value={NomeDaCategoria.nome}
+          onChange={handlChange}
+        />
+        {/* <div>
           <label>
             Nome da Categoria:
         <input
@@ -67,13 +68,13 @@ function CadastroCategoria() {
           </label>
         </div> */}
 
-        <FormField 
-        label="Descrição"
-        type="text"
-        name="Descrição"
-        value={NomeDaCategoria.nome}
-        onChange={handlChange}
-       />
+        <FormField
+          label="Descrição"
+          type="text"
+          name="Descrição"
+          value={NomeDaCategoria.nome}
+          onChange={handlChange}
+        />
 
         {/* <div>
           <label>
@@ -89,13 +90,13 @@ function CadastroCategoria() {
           </label>
         </div> */}
 
-        <FormField 
-        label="cor"
-        type="color"
-        name="cor"
-        value={NomeDaCategoria.nome}
-        onChange={handlChange}
-       />
+        <FormField
+          label="cor"
+          type="color"
+          name="cor"
+          value={NomeDaCategoria.nome}
+          onChange={handlChange}
+        />
 
         {/* <div>
           <label>
@@ -117,24 +118,20 @@ function CadastroCategoria() {
       </form>
 
       <ul>
-        {categorias.map((categoria, indice) => {
-          return (
-            <li key={`${categoria}${indice}`}>
-              {categoria.nome}
-            </li>
-          )
-        })}
+        {categorias.map((categoria, indice) => (
+          <li key={`${categoria}${indice}`}>
+            {categoria.nome}
+          </li>
+        ))}
 
       </ul>
 
-
       <Link to="/">
         Ir para Home
-        </Link>
+      </Link>
 
     </PageDefault>
-  )
+  );
 }
-
 
 export default CadastroCategoria;
