@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import FormField from '../../../components/FormField';
 import PageDefault from '../../../components/PageDefault';
+import Button from '../../../components/Button';
 
 function CadastroCategoria() {
   const [categorias, setCategorias] = useState([]);
@@ -15,8 +16,7 @@ function CadastroCategoria() {
 
   const [NomeDaCategoria, setNomeDaCategoria] = useState(dadosIniciais);
   // função set - usada para alterar o NomeDaCategoria
-  // console.log([NomeDaCategoria], NomeDaCategoria)
-
+  
   function setValores(chave, valor) {
     setNomeDaCategoria({
       ...NomeDaCategoria,
@@ -54,72 +54,29 @@ function CadastroCategoria() {
           value={NomeDaCategoria.nome}
           onChange={handlChange}
         />
-        {/* <div>
-          <label>
-            Nome da Categoria:
-        <input
-              type="text"
-              //mostrar o valor dentro do compo nome da categoria
-              value={NomeDaCategoria.nome}
-              //funçao criada para alterar dados do campo nome da categoria
-              name="nome"
-              onChange={handlChange}
-            />
-          </label>
-        </div> */}
 
         <FormField
           label="Descrição"
-          type="text"
-          name="Descrição"
-          value={NomeDaCategoria.nome}
+          type="textarea"
+          name="text"
+          value={NomeDaCategoria.text}
           onChange={handlChange}
         />
-
-        {/* <div>
-          <label>
-            Descrição:
-        <input
-              type="text"
-              //mostrar o valor dentro do compo nome da categoria
-              value={NomeDaCategoria.descricao}
-              //funçao criada para alterar dados do campo nome da categoria
-              name="descricao"
-              onChange={handlChange}
-            />
-          </label>
-        </div> */}
-
         <FormField
           label="cor"
           type="color"
           name="cor"
-          value={NomeDaCategoria.nome}
+          value={NomeDaCategoria.cor}
           onChange={handlChange}
         />
-
-        {/* <div>
-          <label>
-            Cor:
-        <input
-              type="color"
-              //mostrar o valor dentro do compo nome da categoria
-              value={NomeDaCategoria.cor}
-              //funçao criada para alterar dados do campo nome da categoria
-              name="cor"
-              onChange={handlChange}
-            />
-          </label>
-        </div> */}
-
-        <button>
+        <Button>
           Cadastrar
-        </button>
+        </Button>
       </form>
 
       <ul>
-        {categorias.map((categoria, indice) => (
-          <li key={`${categoria}${indice}`}>
+        {categorias.map((categoria) => (
+          <li key={`${categoria.nome}`}>
             {categoria.nome}
           </li>
         ))}
